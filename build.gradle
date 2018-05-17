@@ -12,6 +12,10 @@ buildscript {
             name "aliyun2"
             url 'http://maven.aliyun.com/mvn/repository/'
         }
+        maven {
+            name "spring milestone"
+            url "https://repo.spring.io/milestone/"
+        }
         mavenCentral()
     }
     dependencies {
@@ -37,13 +41,28 @@ repositories {
         name "aliyun2"
         url 'http://maven.aliyun.com/mvn/repository/'
     }
+    maven {
+        name "spring milestone"
+        url "https://repo.spring.io/milestone/"
+    }
     mavenCentral()
 }
 
+ext {
+    springCloudVersion = 'Finchley.RC1'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     compile('org.apache.commons:commons-lang3:3.5')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
