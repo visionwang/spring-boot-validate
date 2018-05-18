@@ -115,7 +115,7 @@ public abstract class AbstractValidateProcessor<C extends ValidateCode> implemen
     String codeInRequest;
     try {
       codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(),
-          codeType.getParamNameOnValidate());
+          "code");
     } catch (ServletRequestBindingException e) {
       throw new ValidateException("获取验证码的值失败");
     }
@@ -128,7 +128,7 @@ public abstract class AbstractValidateProcessor<C extends ValidateCode> implemen
       throw new ValidateException(codeType + "验证码不存在");
     }
 
-    if (codeInSession.isExpried()) {
+    if (codeInSession.alreadExpried()) {
       validateCodeRepository.remove(request, codeType);
       throw new ValidateException(codeType + "验证码已过期");
     }

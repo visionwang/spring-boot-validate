@@ -1,6 +1,7 @@
 package com.yuuyoo.validate.properties;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @Description: 短信验证码配置项
@@ -8,6 +9,7 @@ import lombok.Data;
  * @Date: 2018/5/16 15:22
  */
 @Data
+@EqualsAndHashCode
 public class SmsCodeProperties {
 
   /**
@@ -17,7 +19,7 @@ public class SmsCodeProperties {
   /**
    * 过期时间
    */
-  private int expireIn = 60;
+  private int expireIn = 5;
 
   public SmsCodeProperties() {
 

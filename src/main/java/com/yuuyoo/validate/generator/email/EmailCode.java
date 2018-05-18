@@ -2,6 +2,7 @@ package com.yuuyoo.validate.generator.email;
 
 import com.yuuyoo.validate.generator.ValidateCode;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
  * @Date: 2018/5/16 17:49
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class EmailCode extends ValidateCode {
   public EmailCode(String code, int expireIn) {
     super(code, expireIn);

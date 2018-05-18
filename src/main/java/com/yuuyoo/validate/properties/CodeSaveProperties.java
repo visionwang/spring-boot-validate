@@ -1,6 +1,7 @@
 package com.yuuyoo.validate.properties;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
+@EqualsAndHashCode
 public class CodeSaveProperties {
 
   private boolean enable = false;

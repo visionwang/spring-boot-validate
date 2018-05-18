@@ -1,5 +1,7 @@
 package com.yuuyoo.validate.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yuuyoo.validate.generator.ValidateCode;
 import com.yuuyoo.validate.generator.ValidateProcessorHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +22,18 @@ public class ValidateCodeController {
 
   @Autowired
   private ValidateProcessorHolder validateProcessorHolder;
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @GetMapping("/code/{type}")
-  public ValidateCode createCode(
+  public String createCode(
       HttpServletRequest request,
       HttpServletResponse response,
       @PathVariable String type)
       throws Exception {
-    return validateProcessorHolder.findValidateProcessor(type).create(new ServletWebRequest(request, response));
+    ValidateCode validateCode = validateProcessorHolder.findValidateProcessor(type).create(new ServletWebRequest(request, response));
+    String rst = JSON.toJSONString(validateCode);
+    return rst;
   }
 
   @GetMapping("/validate/{type}")

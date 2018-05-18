@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.yuuyoo.validate.generator;
 
 import org.springframework.web.context.request.ServletWebRequest;

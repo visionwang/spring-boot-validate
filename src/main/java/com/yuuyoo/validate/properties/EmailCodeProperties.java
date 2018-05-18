@@ -1,15 +1,14 @@
 package com.yuuyoo.validate.properties;
-
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @Description: 邮件验证码
  * @Auther: dave
  * @Date: 2018/5/16 15:33
  */
-@Builder
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class EmailCodeProperties extends SmsCodeProperties {
 
   /**

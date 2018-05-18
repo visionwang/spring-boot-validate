@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.1.RELEASE'
     }
     repositories {
         mavenLocal()
@@ -17,6 +17,10 @@ buildscript {
             url "https://repo.spring.io/milestone/"
         }
         mavenCentral()
+        maven {
+            name "nexus"
+            url 'https://nexus.yuuyoo.com/repository/maven-public/'
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -46,6 +50,10 @@ repositories {
         url "https://repo.spring.io/milestone/"
     }
     mavenCentral()
+    maven {
+        name "nexus"
+        url 'https://nexus.yuuyoo.com/repository/maven-public/'
+    }
 }
 
 ext {
@@ -60,10 +68,26 @@ dependencyManagement {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    //compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.apache.commons:commons-lang3:3.5')
+    compile('com.alibaba:fastjson:1.2.47')
+    compile('com.yuuyoo:spring-boot-starter-logging:0.0.7')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootJar {
+    baseName = 'validate'
+
+    manifest {
+        attributes 'Implementation-Title': baseName,
+                'Implementation-Version': version,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version')
+    }
 }

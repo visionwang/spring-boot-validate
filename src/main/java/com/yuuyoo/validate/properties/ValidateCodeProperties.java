@@ -1,6 +1,7 @@
 package com.yuuyoo.validate.properties;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "validate.code")
 @Data
 @Component
+@EqualsAndHashCode
 public class ValidateCodeProperties {
 
   /**

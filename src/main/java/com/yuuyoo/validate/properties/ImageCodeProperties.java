@@ -1,6 +1,7 @@
 package com.yuuyoo.validate.properties;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @Description: 图片验证码配置项
@@ -8,6 +9,7 @@ import lombok.Data;
  * @Date: 2018/5/16 15:22
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class ImageCodeProperties extends SmsCodeProperties {
 
   /**
