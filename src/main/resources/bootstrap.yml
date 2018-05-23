@@ -2,14 +2,13 @@ spring:
   application:
     name: validate
   profiles.active: dev
-  cloud.config.failFast: false
 
 ---
 spring:
   profiles: dev
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      uri: http://localhost:8888
 
 ---
 spring:
